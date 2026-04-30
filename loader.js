@@ -1,7 +1,7 @@
 const section = window.location.pathname.split('/').filter(Boolean)[0];
 
-const scriptSrc = document.currentScript.src;
-const base = scriptSrc.substring(0, scriptSrc.lastIndexOf('/')) + '/styles';
+const script = document.currentScript;
+const base = script.src.substring(0, script.src.lastIndexOf('/')) + '/styles';
 
 const styles = {
   notes: `${base}/notes.css`,
@@ -11,7 +11,13 @@ const styles = {
 
 const href = styles[section] || `${base}/default.css`;
 
-const link = document.createElement("link");
-link.rel = "stylesheet";
-link.href = href;
-document.head.appendChild(link);
+const linkTag = `<link rel="stylesheet" href="${href}">`;
+
+if (document.readyState === "loading") {
+  document.write(linkTag);
+} else {
+  const link = document.createElement("link");
+  link.rel = "stylesheet";
+  link.href = href;
+  document.head.appendChild(link);
+}
