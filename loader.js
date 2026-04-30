@@ -4,8 +4,6 @@ const scriptSrc = document.currentScript.src;
 const base = scriptSrc.substring(0, scriptSrc.lastIndexOf('/')) + '/styles';
 
 const styles = {
-  notes: `${base}/notes.css`,
-  travel: `${base}/travel.css`,
   about: `${base}/about.css`
 };
 
