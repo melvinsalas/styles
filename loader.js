@@ -6,9 +6,9 @@ const styles = {
   about: "/styles/about.css"
 };
 
-if (styles[section]) {
-  const link = document.createElement("link");
-  link.rel = "stylesheet";
-  link.href = styles[section];
-  document.head.appendChild(link);
-}
+const href = styles[section] || "/styles/default.css";
+
+const link = document.createElement("link");
+link.rel = "stylesheet";
+link.href = href;
+document.head.appendChild(link);
