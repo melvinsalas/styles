@@ -12,4 +12,9 @@ const href = styles[section] || `${base}/default.css`;
 const link = document.createElement("link");
 link.rel = "stylesheet";
 link.href = href;
+
+link.onload = () => {
+  document.documentElement.style.visibility = "visible";
+};
+
 document.head.appendChild(link);
